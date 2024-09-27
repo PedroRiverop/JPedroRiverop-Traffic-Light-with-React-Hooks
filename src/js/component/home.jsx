@@ -26,10 +26,21 @@ const Home = () => {
 		setLights(["red", "yellow", "green", "purple"]);
 		setStyleBox({width : 200, height : 550});
 		} else {setLights(["red", "yellow", "green"]); setStyleBox({width : 200, height : 400})}
-	}	
+	}
+	
+	function handlerNextColor() {
+		switch (shadow){
+			case "": setShadow(lights[0]); break;
+			case "red": setShadow(lights[1]); break;
+			case "yellow": setShadow(lights[2]); break;
+			case "green": ((lights.length === 3)?(setShadow(lights[0])): (setShadow(lights[3]))); break
+			case "purple": setShadow(lights[0]); break;
+		}
+	}
+
 	return (
 		<div className="d-flex flex-column align-items-center">
-			<div className="bg-black" style={{width : 20, height : 150}}></div>
+			<div className="bg-black" style={{width : 20, height : 80}}></div>
 			<div className="bg-black d-flex flex-column align-items-center" style={styleBox} >
 				{lights.map((color, index)=>(
 				<div key={index} 
@@ -40,7 +51,11 @@ const Home = () => {
 				</div>))}
 				
 			</div>
-			<button onClick={handlerAddColor}>Purple Light</button>
+			<div className='d-flex flex-column align-items-center'>
+				<button className="btn my-3 d-block" onClick={handlerAddColor} style={{background: "purple", color: 'black'}}>Purple Light ON/OFF</button>
+				<button className="btn btn-secondary d-block" onClick={handlerNextColor}>Next Color</button>
+			</div>
+			
 		</div>
 	);
 };
