@@ -1,24 +1,31 @@
-import React from "react";
+
+import React, { useState} from 'react';
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
+// boxShadow: '0px 0px 9px 12px red'
 
+const styleLights = {width : 110, height : 110};
+const lights = ["red", "yellow", "green"]
+
+
+	
 //create your first component
 const Home = () => {
+	const [ shadow, setShadow] = useState("");
+	function handlerClick (index){
+		setShadow(lights[index])
+		console.log(shadow);}
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="d-flex flex-column align-items-center">
+			<div className="bg-black" style={{width : 20, height : 150}}></div>
+			<div className="bg-black d-flex flex-column align-items-center" style={{width : 200, height : 400}} >
+				{lights.map((color, index)=>(
+				<div key={index} 
+					className="rounded-circle my-auto" 
+					style={{ ...styleLights, background: color}}
+					onClick={()=>handlerClick(index)} ></div>))}
+			</div>
 		</div>
 	);
 };
