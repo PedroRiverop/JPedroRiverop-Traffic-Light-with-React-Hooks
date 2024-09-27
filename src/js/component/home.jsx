@@ -13,9 +13,12 @@ const lights = ["red", "yellow", "green"]
 //create your first component
 const Home = () => {
 	const [ shadow, setShadow] = useState("");
+	//const [selected, setSelected] = useState("")
+	//const styleShadow ={ boxShadow: '0px 0px 9px 12px ' + ((color===shadow)? shadow : "")} 
+
 	function handlerClick (index){
 		setShadow(lights[index])
-		console.log(shadow);}
+		}
 	return (
 		<div className="d-flex flex-column align-items-center">
 			<div className="bg-black" style={{width : 20, height : 150}}></div>
@@ -23,7 +26,7 @@ const Home = () => {
 				{lights.map((color, index)=>(
 				<div key={index} 
 					className="rounded-circle my-auto" 
-					style={{ ...styleLights, background: color}}
+					style={{ ...styleLights, boxShadow: '0px 0px 9px 12px ' + ((color===shadow)? shadow : ""), background: color}}
 					onClick={()=>handlerClick(index)} ></div>))}
 			</div>
 		</div>
