@@ -10,3 +10,7 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+.myDiv {
+    width: 110px; 
+    height: 110px
+};

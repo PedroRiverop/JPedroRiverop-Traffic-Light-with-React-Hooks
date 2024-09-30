@@ -1,13 +1,6 @@
 
 import React, { useState} from 'react';
-
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-// boxShadow: '0px 0px 9px 12px red'
-
-const styleLights = {width : 110, height : 110};
-
-
 
 	
 //create your first component
@@ -44,8 +37,8 @@ const Home = () => {
 			<div className="bg-black d-flex flex-column align-items-center" style={styleBox} >
 				{lights.map((color, index)=>(
 				<div key={index} 
-					className="rounded-circle my-auto" 
-					style={{ ...styleLights, boxShadow: '0px 0px 9px 12px ' + ((color===shadow)? shadow : ""), background: color}}
+					className="rounded-circle my-auto myDiv" 
+					style={{boxShadow: '0px 0px 9px 12px ' + ((color===shadow)? shadow : ""), background: color}}
 					onClick={()=>handlerClick(index)} >
 
 				</div>))}
